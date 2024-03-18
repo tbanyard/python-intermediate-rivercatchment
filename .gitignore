@@ -1,3 +1,7 @@
+# Virtual environment
+myenv/
+.myenv/
+
 # IDEs
 .vscode/
 .idea/
