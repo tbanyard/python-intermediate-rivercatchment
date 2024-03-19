@@ -6,7 +6,7 @@ Catchment data is held in a Pandas dataframe (2D array) where each column contai
 data for a single measurement site, and each row represents a single measurement
 time across all sites.
 """
-
+import numpy as np
 import pandas as pd
 
 def read_variable_from_csv(filename):
@@ -55,3 +55,8 @@ def daily_min(data):
     """Calculate the daily min of a 2d data array.
     Index must be np.datetime64 compatible format."""
     return data.groupby(data.index.date).min()
+
+def data_normalise(data):
+    """Normalise any given 2D data array"""
+    normal_max = np.array(np.max(data, axis=0))
+    return data/normal_max[np.newaxis, :]
